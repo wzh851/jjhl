@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>高德地图 - 华联优品生活广场</title>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+    <script src="https://webapi.amap.com/maps?v=2.0&key=1a2dc287c3f905675a55f41b78aa8721"></script>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    var map = new AMap.Map('container', {
+        center: [114.352482, 36.103442], // 华联优品生活广场的坐标
+        zoom: 18
+    });
+
+    var marker = new AMap.Marker({
+        position: [114.352482, 36.103442], // 华联优品生活广场坐标
+        map: map,
+        title: '华联优品生活广场（华强店）'
+    });
+
+    var infoWindow = new AMap.InfoWindow({
+        content: '<div><strong>华联优品生活广场（华强店）</strong><br/>河南省安阳市文峰区平原路44-45号</div>',
+        offset: new AMap.Pixel(0, -30)
+    });
+
+    marker.on('click', function () {
+        infoWindow.open(map, marker.getPosition());
+    });
+
+    // 默认显示信息窗体
+    infoWindow.open(map, marker.getPosition());
+</script>
+</body>
+</html>
